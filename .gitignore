@@ -1,0 +1,5 @@
+browser_profile/
+backup/
+course_*/
+__pycache__/
+*.pyc
