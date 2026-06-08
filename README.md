@@ -1,6 +1,6 @@
 # course-crawler
 
-Estrae testo, audio e immagini da qualsiasi corso basato su [Skilljar](https://skilljar.com).
+Estrae testo ed audio da qualsiasi corso basato su [Skilljar](https://skilljar.com).
 
 Funziona con video incorporati di **JW Player** e **YouTube**. Gestisce anche corsi protetti da login tramite una vera sessione del browser.
 
@@ -11,7 +11,6 @@ Funziona con video incorporati di **JW Player** e **YouTube**. Gestisce anche co
 - Individua automaticamente tutti i link delle lezioni dalla barra laterale del corso — nessuna raccolta manuale degli URL
 - Estrae il testo delle lezioni (funziona anche nelle pagine protette da autenticazione)
 - Scarica audio da stream JW Player e da embed YouTube (tramite yt-dlp)
-- Scarica le immagini di contenuto per ogni lezione (esclude icone, avatar e elementi grafici dell’interfaccia)
 - Salva la sessione di login così devi autenticarti solo una volta
 
 ---
@@ -99,14 +98,8 @@ skilljar-course/
 │   │   └── ...
 │   │
 │   ├── course_audio/
-│   │   ├── lesson_01.mp3
-│   │   ├── lesson_02.mp3
-│   │   └── ...
-│   │
-│   └── course_images/
-│       ├── lesson_01/
-│       │   ├── image_01.png
-│       │   └── image_02.png
+│       ├── lesson_01.mp3
+│       ├── lesson_02.mp3
 │       └── ...
 │
 ├── course_20260606_185008/
@@ -123,10 +116,8 @@ Modifica il blocco di configurazione all’inizio di `extract.py`:
 |---|---|---|
 | `TEXT_DIR` | `course_text` | Cartella di output per i file di testo |
 | `AUDIO_DIR` | `course_audio` | Cartella di output per i file audio |
-| `IMAGE_DIR` | `course_images` | Cartella di output per le immagini |
 | `PROFILE_DIR` | `browser_profile` | Sessione del browser salvata (login) |
 | `STREAM_WAIT` | `20` | Secondi di attesa per la comparsa dello stream video |
-| `MIN_IMG_PX` | `150` | Dimensione minima dell’immagine da scaricare (px) |
 
 ---
 
@@ -160,7 +151,7 @@ Licenza MIT — vedi [LICENSE](LICENSE) per i dettagli.
 
 # course-crawler
 
-Extract text, audio, and images from any [Skilljar](https://skilljar.com)-based course.
+Extract text and audio from any [Skilljar](https://skilljar.com)-based course.
 
 Works with **JW Player** and **YouTube** embedded videos. Handles authenticated (login-gated) courses via a real browser session.
 
@@ -171,7 +162,6 @@ Works with **JW Player** and **YouTube** embedded videos. Handles authenticated 
 - Auto-discovers all lesson URLs from the course sidebar — no manual URL collection
 - Extracts lesson text (works on authenticated pages)
 - Downloads audio from JW Player streams and YouTube embeds (via yt-dlp)
-- Downloads content images per lesson (skips icons, avatars, and UI chrome)
 - Saves your login session so you only log in once
 
 ---
@@ -255,14 +245,8 @@ skilljar-course/
 │   │   └── ...
 │   │
 │   ├── course_audio/
-│   │   ├── lesson_01.mp3
-│   │   ├── lesson_02.mp3
-│   │   └── ...
-│   │
-│   └── course_images/
-│       ├── lesson_01/
-│       │   ├── image_01.png
-│       │   └── image_02.png
+│       ├── lesson_01.mp3
+│       ├── lesson_02.mp3
 │       └── ...
 │
 ├── course_20260606_185008/
@@ -279,10 +263,8 @@ Edit the config block at the top of `extract.py`:
 |---|---|---|
 | `TEXT_DIR` | `course_text` | Output folder for text files |
 | `AUDIO_DIR` | `course_audio` | Output folder for audio files |
-| `IMAGE_DIR` | `course_images` | Output folder for images |
 | `PROFILE_DIR` | `browser_profile` | Saved browser session (login) |
 | `STREAM_WAIT` | `20` | Seconds to wait for video stream to appear |
-| `MIN_IMG_PX` | `150` | Minimum image dimension to download (px) |
 
 ---
 
