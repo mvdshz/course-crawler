@@ -21,6 +21,7 @@ Run:
 import asyncio
 import os
 import subprocess
+import sys
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlparse
@@ -177,6 +178,7 @@ async def extract_lesson(page, context, url: str, idx: int, total: int):
             txt_path = TEXT_DIR / f"lesson_{idx:02d}.txt"
             txt_path.write_text(f"Source: {url}\n\n{text}", encoding="utf-8")
             print(f"  ✓ text   → {txt_path}")
+
         # ── Video ────────────────────────────────────────
         video_url, source_type = await find_video_url(page)
 
@@ -204,7 +206,8 @@ async def extract_lesson(page, context, url: str, idx: int, total: int):
             out_tmpl = str(AUDIO_DIR / f"lesson_{idx:02d}.%(ext)s")
             result = subprocess.run(
                 [
-                    "yt-dlp", "-x", "--audio-format", "mp3", "--audio-quality", "0",
+                    sys.executable, "-m", "yt_dlp",
+                    "-x", "--audio-format", "mp3", "--audio-quality", "0",
                     "--quiet", "--no-warnings", "-o", out_tmpl, video_url
                 ],
                 capture_output=True,
